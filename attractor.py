@@ -30,7 +30,7 @@ def attractor(s=10,r=28,b=2.667):
 	    xs[i + 1] = xs[i] + (x_dot * dt)
 	    ys[i + 1] = ys[i] + (y_dot * dt)
 	    zs[i + 1] = zs[i] + (z_dot * dt)
-	return xs, ys
+	return xs, zs
 
 
 #ax = fig.gca(projection='3d')
@@ -43,29 +43,30 @@ plt.subplot(122)
 plt.title("b=2")
 plt.plot(attractor(b=2)[0], attractor(b=2)[1])
 '''
-num_graphs = 3
+num_graphs = 4
 
 s_range = [5,20]
 r_range = [10,50]
 b_range = [1,3]
 param_ranges = [s_range, r_range, b_range]
-count = 1	
+count = 0	
 for param_range in param_ranges:
-	for index, param_val in zip(range(1 + (count*3),num_graphs+1),np.linspace(param_range[0],param_range[1],num_graphs)):
-		print(str(num_graphs) + "" + str(len(param_range)) + "" + str(index))
-		plt.subplot(num_graphs,len(param_range),index)
+	print(1 + count*num_graphs)
+	for index, param_val in zip(range(1 + count*num_graphs ,(count+2)*num_graphs),np.linspace(param_range[0],param_range[1],num_graphs)):
+		
+		print("3" + str(num_graphs) + "" + str(index))
+		plt.subplot(3,num_graphs,index)
 
-		plt.title("b=%f" % (b_val))
-		xs, ys = attractor(b=b_val)
+		plt.title("b=%f" % (param_val))
+		xs, ys = attractor(b=param_val)
 		plt.plot(xs,ys)
-		print(str(num_graphs) + "3" + str(index))
 	count += 1
 
 
 
 """
 
-for index, b_val in zip(range(1,num_graphs+1),np.linspace(b_range[0],b_range[1],num_graphs)):
+for index, b_val in zip(range(1,num_graphs+1),np.d linspace(b_range[0],b_range[1],num_graphs)):
 	plt.subplot(num_graphs,3,index)
 	plt.title("b=%f" % (b_val))
 	xs, ys = attractor(b=b_val)
