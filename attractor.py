@@ -56,7 +56,7 @@ for param_range in param_ranges:
 	
 	count += 1
 
-plt.savefig("X&Y.png")
+plt.savefig("attractor\ pics/X&Y.png")
 
 #plt.set_title("Lorenz Attractor")
 plt.show()
